@@ -10,7 +10,16 @@ package carina.memory;
  * @author jalheart
  */
 public class SensorMemory extends  Memory{
-    public SensorMemory(MemoryDriver driver) {
-        super(driver);        
+    private static SensorMemory instance;
+    private SensorMemory(MemoryDriver driver) {
+        super(driver);
+    }
+    public static void init(MemoryDriver driver){
+        if(instance==null){
+            instance   =new SensorMemory(driver);
+        }
+    }
+    public static SensorMemory getInstance(){
+        return instance;
     }
 }

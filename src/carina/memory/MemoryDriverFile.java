@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 public class MemoryDriverFile extends MemoryDriver{
     private String URL;
     public MemoryDriverFile(String type){
-        super(type);
+        super(type);        
         this.URL  ="./memory/"+type+".mem";
         this.createFile();
     }
@@ -55,9 +55,10 @@ public class MemoryDriverFile extends MemoryDriver{
         try {
             File f=new File(this.URL);
             if(!f.exists()){
-                f.getParentFile().mkdirs();
+                System.out.println("Camino absoluto: "+f.getAbsolutePath());
+                f.getParentFile().mkdirs();                
                 f.createNewFile();
-            }            
+            }
         } catch (Exception e) {
         }        
     }

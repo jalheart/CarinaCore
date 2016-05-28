@@ -4,12 +4,19 @@
  * and open the template in the editor.
  */
 package carina.metacore;
+
+import carina.memory.SensorMemory;
+
 /**
  *
  * @author jalheart
  */
 abstract public class Sensor extends RootElement{
     private String type;
+    private final SensorMemory sensorMemory;
+    public Sensor() {
+        this.sensorMemory   =SensorMemory.getInstance();
+    }    
     public Object perceiveInformation(Object value){
         return null;
     }
@@ -26,6 +33,12 @@ abstract public class Sensor extends RootElement{
      */
     public void setType(String type) {
         this.type = type;
+    }
+    /**
+     * @return the sensorMemory
+     */
+    public SensorMemory getSensorMemory() {
+        return sensorMemory;
     }
     // </editor-fold>
 }
