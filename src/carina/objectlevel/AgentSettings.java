@@ -6,8 +6,8 @@
 package carina.objectlevel;
 
 import carina.metacore.RootElement;
-import java.util.HashMap;
 import java.util.Map;
+import javax.json.JsonObject;
 
 /**
  *
@@ -15,5 +15,5 @@ import java.util.Map;
  */
 public class AgentSettings extends RootElement{
     public static Map<String,String> db_settings;
-    
+    public static JsonObject config;
 }

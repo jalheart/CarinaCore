@@ -30,7 +30,7 @@ public class Categorization extends CognitiveFunction{
     public List<Object> processInformation(Class<ComputationalStrategy> value) {
         WorkingMemory workingMemory             =WorkingMemory.getInstance();
         BasicCognitiveProcessingUnit    bcpu    =workingMemory.getBcpu();
-        Object information                      =bcpu.getInput().getInformation();
+//        Object information                      =bcpu.getInputs().getInformation();
 
         List<Category> categories   =this.getCategories();
         try {

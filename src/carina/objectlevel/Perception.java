@@ -38,9 +38,9 @@ public class Perception extends CognitiveFunction{
     }
     public void processInformation(Map<String,Object> value) {
         BasicCognitiveProcessingUnit bcpu   =WorkingMemory.getInstance().getBcpu();
-        bcpu.addInput(value.get("information"), (String)value.get("type_sensor"));
+        bcpu.addInput(new Input(value.get("information"), (String) value.get("type_sensor")));
         this.setPerception(bcpu);
         WorkingMemory.getInstance().updateMentalState("is_perceived", Boolean.TRUE);
         WorkingMemory.getInstance().setBcpu(bcpu);
-    }    
+    }
 }

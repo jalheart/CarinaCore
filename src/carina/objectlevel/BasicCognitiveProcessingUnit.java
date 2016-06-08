@@ -17,10 +17,13 @@ import java.util.Map;
  * @author jalheart
  */
 public class BasicCognitiveProcessingUnit extends RootElement{
-    private Input input;
+    private Map<String,Input> _inputs;
     private Pattern pattern;
     private List<Category> categorys;
     private Map<String,Plan>    _plans;
+    public void addInput(Input input){
+        this.setInput(input);
+    }
     public void addInput(Object information,String typeSensor){
         Input newInput  =new Input();
         newInput.setInformation(information);
@@ -51,15 +54,18 @@ public class BasicCognitiveProcessingUnit extends RootElement{
     /**
      * @return the input
      */
-    public Input getInput() {
-        return input;
+    public Map<String,Input> getInputs() {
+        return _inputs;
     }
-
+    public Input getInput(String type){
+        return this._inputs==null?null:this._inputs.get(type);
+    }
     /**
      * @param input the input to set
      */
     public void setInput(Input input) {
-        this.input = input;
+        if(this._inputs==null)this._inputs  =new HashMap<>();
+        this._inputs.put(input.getType(), input);
     }
 
     /**
