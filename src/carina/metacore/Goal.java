@@ -9,7 +9,7 @@ package carina.metacore;
  *
  * @author jalheart
  */
-public class Goal extends Element{
+public class Goal extends Element{    
     private State currentState;
     private State targetState;
     

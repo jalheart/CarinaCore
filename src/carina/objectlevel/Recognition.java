@@ -24,21 +24,20 @@ import java.util.logging.Logger;
 public class Recognition extends CognitiveFunction{
 
     @Override
-    public Object processInformation(Object value) {
+    public Object processInformation(Object value) {        
         return this.processInformation((Class<ComputationalStrategy>) value);
     }
     public Boolean processInformation(Class<ComputationalStrategy> value) {
         WorkingMemory workingMemory             =WorkingMemory.getInstance();
         BasicCognitiveProcessingUnit    bcpu    =workingMemory.getBcpu();
-        Map<String,Input>               inputs  =bcpu.getInputs();
-//        Object information                      =bcpu.getInput().getInformation();
+        Map<String,Input>               inputs  =bcpu.getInputs();        
         try {
             /*
             Constructor<?> constructor  =value.getConstructor(Object.class);
             ComputationalStrategy   algorithmStrategy   =(ComputationalStrategy)constructor.newInstance(((BasicMemoryUnity)information).information);
             Boolean recognition   =(Boolean)algorithmStrategy.run();
             */
-            //TODO Aquí se debe escoger que tipo de reconocimiento se hace depeniento del tipo de sensor o del tipo de dato registrado en el input
+            //TODO Aquí se debe escoger que tipo de reconocimiento se hace depeniento del tipo de sensor o del tipo de dato registrado en el input            
             Boolean recognition =checkText();
             Object information;
             Map<String,Object>  data    =new HashMap<>();
@@ -64,14 +63,17 @@ public class Recognition extends CognitiveFunction{
 //        Object information                      =bcpu.getInput().getInformation();
         
         BasicMemoryUnity    bmu =LongTermMemory.getInstance().retrieveInformation("patterns");
-        List<Pattern> patterns  =(List<Pattern>)bmu.information;
+        List<Pattern> patterns  =(List<Pattern>)bmu.information;        
         //Se verifica que el valor ingresado corresponda con algun patron
         BasicMemoryUnity information;
         for(String key:inputs.keySet()){
             information =(BasicMemoryUnity)inputs.get(key).getInformation();
             for (Pattern pattern : patterns) {
-                if(java.util.regex.Pattern.matches((String)pattern.getPattern(), (String)(information).information))
+                String strPattern   =(String)pattern.getPattern();
+                String strInfo      =(String)(information).information;
+                if(java.util.regex.Pattern.matches(strPattern,strInfo)){
                     return true;
+                }
             }
         }
         return false;
